@@ -1,0 +1,79 @@
+#weather-data {
+    display: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: url(https://iili.io/JXYSCP9.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 100vh;
+  }
+
+  main {
+    background: #4a026686 ;
+    background: linear-gradient(-135deg, #4a02667a, #0af3ff71);
+    position: relative;
+    top: 30%;
+    border: 0.5px solid;
+    border-radius: 5px;
+    padding: 2em;
+    width: 45%;
+    margin: auto;
+    background-size: 400% 400%;
+    animation: gradient 10s ease-in infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  #search {
+    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    height: 50px;
+    border: none;
+  }
+  
+  #submit {
+    border-radius: 0 5px 5px 0;
+    padding: 10px;
+    font-size: 16px;
+    width: 5em;
+    cursor: pointer;
+  }
+
+  #weather-box {
+    display: flex;
+  }
+  
+  #search-bar {
+    display: flex;
+  }
+
