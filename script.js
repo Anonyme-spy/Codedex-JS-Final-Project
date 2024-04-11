@@ -1,16 +1,20 @@
 let searchButton = document.getElementById("submit");
 let search = document.getElementById("search");
 let countrycode;
+let div1 = document.getElementById("div1");
 // to get dropdown items
-let dropdownItems = document.querySelectorAll(".dropdown-item");
+let Items = document.querySelectorAll(".dropdown-item");
+let Menu = document.querySelector(".dropdown-menu");
+let div2 = document.getElementsByClassName("div2");
 let Values;
+const weatherData = document.getElementById("weather-data");
 
 // Add a 'click' event listener to each item
-dropdownItems.forEach((item) => {
+Items.forEach((item) => {
   item.addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent the default link
-    Values = this.textContent; // get the text value of the clicked item
-    document.getElementById("drop").textContent = Values; // set the dropdown button text to the clicked item
+    event.preventDefault(); // stoping the default link
+    Values = this.textContent; // get the text
+    document.getElementById("drop").textContent = Values; // set the dropdown
   });
 });
 
@@ -26,10 +30,25 @@ if (Values == "USA") {
   countrycode = 1;
 }
 
+div1.addEventListener("show.bs.dropdown", function () {
+  this.style.marginBottom = "200px";
+  setTimeout(() => {
+    Menu.style.opacity = 1;
+  }, 600);
+});
+
+div1.addEventListener("hide.bs.dropdown", function () {
+  this.style.marginBottom = "40px";
+  Menu.style.opacity = 0;
+});
+
 async function findWeather() {
-  const weatherData = document.getElementById("weather-data");
-  const apiKey = `api-key-here`;
-  weatherData.style.display = "block";
+  const apiKey = `65b292ccb4d7955e41a5de3490e90cf8`;
+  if (weatherData.innerHTML == "") {
+    setTimeout(() => {
+      weatherData.style.display = "flex";
+    }, 1000);
+  }
   let searchInput = document.getElementById("search").value;
 
   if (searchInput == "") {
@@ -77,7 +96,7 @@ async function findWeather() {
       return;
     }
     const data = await response.json();
-    weatherData.style.display = "flex";
+    // weatherData.style.display = "flex";
     weatherData.innerHTML = `
     <Img src="https://openweathermap.org/img/wn/${
       data.weather[0].icon
@@ -96,9 +115,19 @@ async function findWeather() {
   getWeatherData(geocodeData.lon, geocodeData.lat);
 }
 
-searchButton.addEventListener("click", findWeather);
+function loader() {
+  weatherData.style.display = "flex";
+  weatherData.innerHTML = `<svg viewBox="25 25 50 50">
+  <circle r="20" cy="50" cx="50"></circle>
+</svg>`;
+  setTimeout(() => {
+    findWeather();
+  }, 700);
+}
+
+searchButton.addEventListener("click", loader);
 search.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    findWeather();
+    loader();
   }
 });

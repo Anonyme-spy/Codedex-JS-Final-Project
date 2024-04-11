@@ -94,13 +94,63 @@ h1 {
   border-radius: 5px;
   padding: 1.5em;
   margin-top: 20px;
-
   text-align: center;
   align-items: center;
   gap: 12px;
+  transition: display 1s ease-in-out;
 }
 
 #weather-data > img {
   border-radius: 50%;
   background-color: lightskyblue;
+}
+
+#div1 {
+  display: flex;
+  margin: 10px 20px 30px 40px;
+  transition: margin 0.5s ease-in;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+/* loader */
+svg {
+  width: 3.25em;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+circle {
+  fill: none;
+  stroke: hsl(214, 97%, 59%);
+  stroke-width: 2;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
 }
