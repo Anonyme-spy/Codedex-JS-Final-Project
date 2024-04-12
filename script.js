@@ -43,7 +43,7 @@ div1.addEventListener("hide.bs.dropdown", function () {
 });
 
 async function findWeather() {
-  const apiKey = `openweathermap-api-key-here`;
+  const apiKey = `65b292ccb4d7955e41a5de3490e90cf8`;
   if (weatherData.innerHTML == "") {
     setTimeout(() => {
       weatherData.style.display = "flex";
