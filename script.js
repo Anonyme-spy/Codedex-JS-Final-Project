@@ -43,7 +43,7 @@ div1.addEventListener("hide.bs.dropdown", function () {
 });
 
 async function findWeather() {
-  const apiKey = `open weather api key here`;
+  const apiKey = `openweathermap-api-key-here`;
   if (weatherData.innerHTML == "") {
     setTimeout(() => {
       weatherData.style.display = "flex";
@@ -115,6 +115,7 @@ async function findWeather() {
   getWeatherData(geocodeData.lon, geocodeData.lat);
 }
 
+// i just want to look cool with a loader
 function loader() {
   weatherData.style.display = "flex";
   weatherData.innerHTML = `<svg viewBox="25 25 50 50">
@@ -124,7 +125,7 @@ function loader() {
     findWeather();
   }, 700);
 }
-
+// adding an listener
 searchButton.addEventListener("click", loader);
 search.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
